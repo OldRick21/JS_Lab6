@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList with Pinia</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 2rem; }
+        nav { margin-bottom: 1.5rem; }
+        nav a { margin-right: 1rem; color: #007bff; text-decoration: none; cursor: pointer; }
+        nav a:hover { text-decoration: underline; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        input, button { padding: 0.5rem; font-size: 1rem; }
+        .task-item { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid #eee; }
+        .completed { text-decoration: line-through; color: gray; }
+        .message { background: #d4edda; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <nav>
+        <a @click.prevent="navigate('/')">Список задач</a>
+        <a @click.prevent="navigate('/add')">Добавить</a>
+        <a @click.prevent="navigate('/about')">О нас</a>
+      </nav>
+      <component :is="currentComponent" :key="routeKey" />
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://unpkg.com/pinia@2/dist/pinia.iife.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
